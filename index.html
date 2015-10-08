@@ -206,244 +206,388 @@
 		background: #ddd;
 	}
 </style>
-<FORM name="FORM" id="FORM"><div id="conversation" style="margin:15px auto 0 auto;padding:0 15px;max-width:500px"><div id='QandA' class='QandA'><div style='padding:15px;background:#ddffdd;text-align:center;'>Loading QnA...</div></div><div id='Choices' class='choices'></div><div id='rawmarkup' style='display:none;'>Q(1): Are you interested in creating a Caregiver Authorization Affidavit?
-A: Yes
-	Q(1.1): Great, lets get started! First, what is your full name?
-	X:parent
-		DOC(1.1.1): CAREGIVER AUTHORIZATION AFFIDAVIT&lt;br&gt;Massachusetts General Laws Chapter 201F&lt;br&gt;&lt;br&gt;AUTHORIZING PARTY (Parent/Guardian)&lt;br&gt;&lt;br&gt;
-		Q(1.1.1): Where do you currently live?
-		X:address
-			Q(1.1.1.1): What is your child's name?
-			X:child
-				Q(1.1.1.1.1): which phrase best describes your relationship to &lt;x&gt;child&lt;/x&gt;: "the parent", "legal guardian", or "legal custodian"?
-				X:relationship
-					Q(1.1.1.1.1.1): Who is the caregiver you giving authority over &lt;x&gt;child&lt;/x&gt;?
-					X:caregiver
-						Q(1.1.1.1.1.1.1): where does &lt;x&gt;caregiver&lt;/x&gt; live?
-						X:address2
-							DOC(1.1.1.1.1.1.1.1): I, &lt;x&gt;parent&lt;/x&gt;, residing at &lt;x&gt;address&lt;/x&gt;, am &lt;x&gt;relationship&lt;/x&gt; of the minor child(ren) listed below.&lt;br&gt;I do hereby authorize &lt;x&gt;caregiver&lt;/x&gt;, residing at &lt;x&gt;address2&lt;/x&gt;,  to exercise concurrently the rights
-and responsibilities, except those prohibited below, that I possess relative to the education and health care of the minor children whose names and dates of birth are: &lt;x&gt;child&lt;/x&gt;&lt;br&gt;&lt;br&gt;
-							Q(1.1.1.1.1.1.1.1):GOTO:2
-							
-							
-							
-A: No (A[javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and mail it to the address provided for the FBI.')]: Yes.)
+<FORM name="FORM" id="FORM"><div id="conversation" style="margin:15px auto 0 auto;padding:0 15px;max-width:500px"><div id='QandA' class='QandA'><div style='padding:15px;background:#ddffdd;text-align:center;'>Loading QnA...</div></div><div id='Choices' class='choices'></div><div id='rawmarkup' style='display:none;'>David Kouroyen: CAREGIVER AUTHORIZATION AFFIDAVIT
 
-Q(2): The caregiver may NOT do the following: (If there are any specific acts you do not want the caregiver to perform, please state those acts here.)
+
+Q(1): When the parents of children are not able or available to provide care for their child, another person, often a family member, steps in to become the child's caregiver. 
+One way for a person to become a child's caregiver without going through a court is Caregiver Authorization. Caregiver Authorization is when the parent or parents give the caregiver written permission to make educational and medical decisions.
+A: Continue
+	Q(1.1): A caregiver authorization form requires the signature of a parent, two witness signatures, and has to be notarized. The form itself only takes about ten minutes to fill out.  
+	A: Continue
+		Q(1.1.1):GOTO:2	
+
+Q(2): Are you interested in creating a Caregiver Authorization Affidavit?
+A: Yes
+	Q(2.1): Great, lets get started! First, what is your full name?
+	X:parent
+		DOC(2.1.1):&lt;p style="text-align:center"&gt;CAREGIVER AUTHORIZATION AFFIDAVIT&lt;br&gt;Massachusetts General Laws Chapter 201F&lt;br&gt;&lt;br&gt;
+		Q(2.1.1): Where do you currently live? (ex: 123 real street, Boston MA, 02108)
+		X:address
+			Q(2.1.1.1): What is your child's name?
+			X:child
+				Q(2.1.1.1.1): What is &lt;x&gt;child&lt;/x&gt;'s date of birth? (Month/Day/Year)
+				X:birth
+					Q(2.1.1.1.1.1): which phrase best describes your relationship to &lt;x&gt;child&lt;/x&gt;: "parent", "legal guardian", or "legal custodian"?
+					X:relationship
+						Q(2.1.1.1.1.1.1): Who is the caregiver you giving authority over &lt;x&gt;child&lt;/x&gt;?
+						X:caregiver
+							Q(2.1.1.1.1.1.1.1): where does &lt;x&gt;caregiver&lt;/x&gt; live? (ex: 123 real street, Boston MA, 02108)
+							X:address2
+								DOC(2.1.1.1.1.1.1.1.1):1) AUTHORIZING PARTY (Parent/Guardian)&lt;br&gt;&lt;br&gt; I, &lt;x&gt;parent&lt;/x&gt;, residing at &lt;x&gt;address&lt;/x&gt;, am the &lt;x&gt;relationship&lt;/x&gt; of the minor child listed below.&lt;br&gt;I do hereby authorize &lt;x&gt;caregiver&lt;/x&gt;, residing at &lt;x&gt;address2&lt;/x&gt;,  to exercise concurrently the rights
+								and responsibilities, except those prohibited below, that I possess relative to the education and health care of the minor child whose name and date of birth is:&lt;br&gt; &lt;x&gt;child&lt;/x&gt;   &lt;x&gt;birth&lt;/x&gt;&lt;br&gt;&lt;br&gt;
+								Q(2.1.1.1.1.1.1.1.1):GOTO:3
+														
+
+A: No 
+
+Q(3): The caregiver may NOT do the following: (If there are any specific acts you do not want the caregiver to perform, please state those acts here.)
 X:forbiddenacts
-	Q(2.1): Is the following statement true? There are no court orders in effect that would prohibit me from exercising or conferring the rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)
+	Q(3.1): Is the following statement true? There are no court orders in effect that would prohibit me from exercising or conferring the rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)
 	A: Yes
-		Q(2.1.1): Great! Is the following statement true? I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.
+		Q(3.1.1): Great! Is the following statement true? I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.
 		A: Yes
-			Q(2.1.1.1): Glad to hear it. Is the following statement true? I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.
+			Q(3.1.1.1): Glad to hear it. Is the following statement true? I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.
 			A: Yes
-				Q(2.1.1.1.1):Ok, last one. Is the following statement true? I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. 
+				Q(3.1.1.1.1):Ok, last one. Is the following statement true? I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. 
 				A: Yes
-					Q(2.1.1.1.1.1):GOTO:4
+					Q(3.1.1.1.1.1):GOTO:5
 				A: No
-					Q(2.1.1.1.1.2):GOTO:3
+					Q(3.1.1.1.1.2):GOTO:4
 
 
 			A: No
-				Q(2.1.1.1.2):GOTO:3
+				Q(3.1.1.1.2):GOTO:4
 													
 		A: No
-			Q(2.1.1.2):GOTO:3
+			Q(3.1.1.2):GOTO:4
 	A: No
-		Q(2.1.2):GOTO:3
+		Q(3.1.2):GOTO:4
 
 
 
-Q(3): I am sorry, but you are not able to fill out a Caregiver Authorization Affidavit at this time.  Please return when the previous statement is true.
+Q(4): I am sorry, but you are not able to fill out a Caregiver Authorization Affidavit at this time.  Please return when the previous statement is true.
 
-Q(4): Until what date (day, month, year) would you like this document to remain in effect? It cannot be more than two years from today.
+Q(5): Until what date (day, month, year) would you like this document to remain in effect? It cannot be more than two years from today.
 X:date
-	DOC(4.1): The caregiver may NOT do the following: &lt;x&gt;forbiddenacts&lt;/x&gt;&lt;br&gt;&lt;br&gt; The following statements are true:&lt;br&gt; There are no court orders in effect that would prohibit me from exercising or conferringthe rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)&lt;br&gt;
+	DOC(5.1): The caregiver may NOT do the following: &lt;x&gt;forbiddenacts&lt;/x&gt;&lt;br&gt;&lt;br&gt; The following statements are true:&lt;br&gt; There are no court orders in effect that would prohibit me from exercising or conferringthe rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)&lt;br&gt;
 	I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.&lt;br&gt;	
 	I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.&lt;br&gt;
 	I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. &lt;br&gt;&lt;br&gt;
 	This document shall remain in effect until &lt;x&gt;date&lt;/x&gt;, or until I notify the caregiver in writing that I have amended or revoked it.&lt;br&gt;&lt;br&gt;
 	
-	Q(4.1): What is your telephone number?
+	Q(5.1): What is your telephone number?
 	X:phone
-		DOC(4.1.1): I hereby affirm that the above statements are true, under pains and penalties of perjury.&lt;br&gt;&lt;br&gt; Signature:_________________________________&lt;br&gt; Printed Name:  &lt;x&gt;parent&lt;/x&gt;&lt;br&gt; Telephone Number: &lt;x&gt;phone&lt;/x&gt;
-		Q(4.1.1): great, lets test this baby out
-		A[javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and mail it to the address provided for the FBI.')]: Yes.
+		DOC(5.1.1): I hereby affirm that the above statements are true, under pains and penalties of perjury.&lt;br&gt;&lt;br&gt; Signature:_________________________________&lt;br&gt; Printed Name:  &lt;x&gt;parent&lt;/x&gt;&lt;br&gt; Telephone Number: &lt;x&gt;phone&lt;/x&gt;&lt;br&gt;&lt;br&gt;
+		Q(5.1.1):GOTO:6
+
+Q(6): What is &lt;x&gt;caregiver&lt;/x&gt;'s relationship to &lt;x&gt;child&lt;/x&gt;? (i.e. aunt, uncle, godfather, grandmother, etc)
+X:relationship2
+	DOC(6.1): 2. WITNESSES TO AUTHORIZING PARTY SIGNATURE&lt;br&gt; (To be signed by persons over the age of 18 who are not the designated caregiver.) (To be signed by persons over the age of 18 who are not the designated caregiver.)&lt;br&gt;&lt;br&gt;
+	Witness #1 Signature: ____________________________________&lt;br&gt;
+	Printed Name: ____________________________________&lt;br&gt;
+	Address:   ____________________________________&lt;br&gt;
+	Telephone: ____________________________________&lt;br&gt;&lt;br&gt;
+
+	Witness #2 Signature: ____________________________________&lt;br&gt;
+	Printed Name:         ____________________________________&lt;br&gt;
+	Address:              ____________________________________&lt;br&gt;
+	Telephone:            ____________________________________&lt;br&gt;&lt;br&gt;
+
+	Q(6.1): What is &lt;x&gt;caregiver&lt;/x&gt;'s telephone number? 
+	X:phone2
+		DOC(6.1.1): 3. NOTARIZATION OF AUTHORIZING PARTY'S SIGNATURE&lt;br&gt;&lt;br&gt;
+
+
+Commonwealth of Massachusetts&lt;br&gt;
+______________, ss&lt;br&gt;
+On this date, _______________, before me, the undersigned notary public, personally appeared
+_________________________________________, proved to me through satisfactory evidence of
+identification, which was _________________________________, to be the person whose name is signed
+on the preceding document, and swore under the pains and penalties of perjury that the foregoing
+statements are true.&lt;br&gt;
+Signature and seal of notary: _____________________________&lt;br&gt;
+Printed name of notary: _____________________________&lt;br&gt;
+My commission expires: _____________________________&lt;br&gt;&lt;br&gt;
+
+		Q(6.1.1):  Great job! That is all the information needed at this time. 
+		A: Continue
+			DOC(6.1.1.1): 4. CAREGIVER ACKNOWLEDGMENT&lt;br&gt;&lt;br&gt;
+	I,&lt;x&gt;caregiver&lt;/x&gt;, am at least 18 years of age and the above child currently resides with me at &lt;x&gt;address2&lt;/x&gt;. 
+	I am the child's &lt;x&gt;relationship2&lt;/x&gt;.&lt;br&gt;
+	
+	I understand that I may, without obtaining further consent from a parent, legal custodian
+	or legal guardian of the child, exercise concurrent rights and responsibilities relative
+	to the education and health care of the child, except those rights and responsibilities
+	prohibited above. However, I may not knowingly make a decision that conflicts with the
+	decision of the child's parent, legal guardian or legal custodian.&lt;br&gt;
+	
+	I understand that, if the affidavit is amended or revoked, I must provide the amended
+	affidavit or revocation to all parties to whom I have provided this affidavit prior to further
+	exercising any rights or responsibilities under the affidavit.&lt;br&gt;
+
+	I hereby affirm that the above statements are true, under pains and penalties of perjury.&lt;br&gt;&lt;br&gt;
+
+	Signature of caregiver: ____________________________________&lt;br&gt;
+	Printed Name:     &lt;x&gt;caregiver&lt;/x&gt;&lt;br&gt;
+	Telephone:        &lt;x&gt;phone2&lt;/x&gt;&lt;br&gt;
+	date:__________           &lt;br&gt;&lt;br&gt;
+		
+			Q(6.1.1.1):GOTO:7
+
+Q(7): You are nearly done drafting your Caregiver Authorization Affidavit.  
+Once you print out the document, you must sign it in the presence of two witnesses, get the form notarized, and get &lt;x&gt;caregiver&lt;/x&gt;'s signature.
+A[javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and once you have the necessary signatures it is complete')]: Understood.  I would like to proceed to my document. 
+		
 
 
 
 
 
+</div><div id="ondeck" name="ondeck"><div id="doc" name="doc" style="display:none;"></div><div id='Q-1' name='Q-1' style='display:none;'> When the parents of children are not able or available to provide care for their child, another person, often a family member, steps in to become the child's caregiver. 
+One way for a person to become a child's caregiver without going through a court is Caregiver Authorization. Caregiver Authorization is when the parent or parents give the caregiver written permission to make educational and medical decisions.
+</div><div id='Q-1.1' name='Q-1.1' style='display:none;'> A caregiver authorization form requires the signature of a parent, two witness signatures, and has to be notarized. The form itself only takes about ten minutes to fill out.  
+</div><div id='Q-1.1.1' name='Q-1.1.1' style='display:none;'>GOTO:2	
+
+</div><div id='Q-2' name='Q-2' style='display:none;'> Are you interested in creating a Caregiver Authorization Affidavit?
+</div><div id='Q-2.1' name='Q-2.1' style='display:none;'> Great, lets get started! First, what is your full name?
+</div><div id='D-2.1.1' name='D-2.1.1' style='display:none;'><p style="text-align:center">CAREGIVER AUTHORIZATION AFFIDAVIT<br>Massachusetts General Laws Chapter 201F<br><br>
+</div><div id='Q-2.1.1' name='Q-2.1.1' style='display:none;'> Where do you currently live? (ex: 123 real street, Boston MA, 02108)
+</div><div id='Q-2.1.1.1' name='Q-2.1.1.1' style='display:none;'> What is your child's name?
+</div><div id='Q-2.1.1.1.1' name='Q-2.1.1.1.1' style='display:none;'> What is <x>child</x>'s date of birth? (Month/Day/Year)
+</div><div id='Q-2.1.1.1.1.1' name='Q-2.1.1.1.1.1' style='display:none;'> which phrase best describes your relationship to <x>child</x>: "parent", "legal guardian", or "legal custodian"?
+</div><div id='Q-2.1.1.1.1.1.1' name='Q-2.1.1.1.1.1.1' style='display:none;'> Who is the caregiver you giving authority over <x>child</x>?
+</div><div id='Q-2.1.1.1.1.1.1.1' name='Q-2.1.1.1.1.1.1.1' style='display:none;'> where does <x>caregiver</x> live? (ex: 123 real street, Boston MA, 02108)
+</div><div id='D-2.1.1.1.1.1.1.1.1' name='D-2.1.1.1.1.1.1.1.1' style='display:none;'>1) AUTHORIZING PARTY (Parent/Guardian)<br><br> I, <x>parent</x>, residing at <x>address</x>, am the <x>relationship</x> of the minor child listed below.<br>I do hereby authorize <x>caregiver</x>, residing at <x>address2</x>,  to exercise concurrently the rights
+								and responsibilities, except those prohibited below, that I possess relative to the education and health care of the minor child whose name and date of birth is:<br> <x>child</x>   <x>birth</x><br><br>
+</div><div id='Q-2.1.1.1.1.1.1.1.1' name='Q-2.1.1.1.1.1.1.1.1' style='display:none;'>GOTO:3
+														
+
+</div><div id='Q-3' name='Q-3' style='display:none;'> The caregiver may NOT do the following: (If there are any specific acts you do not want the caregiver to perform, please state those acts here.)
+</div><div id='Q-3.1' name='Q-3.1' style='display:none;'> Is the following statement true? There are no court orders in effect that would prohibit me from exercising or conferring the rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)
+</div><div id='Q-3.1.1' name='Q-3.1.1' style='display:none;'> Great! Is the following statement true? I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.
+</div><div id='Q-3.1.1.1' name='Q-3.1.1.1' style='display:none;'> Glad to hear it. Is the following statement true? I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.
+</div><div id='Q-3.1.1.1.1' name='Q-3.1.1.1.1' style='display:none;'>Ok, last one. Is the following statement true? I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. 
+</div><div id='Q-3.1.1.1.1.1' name='Q-3.1.1.1.1.1' style='display:none;'>GOTO:5
+</div><div id='Q-3.1.1.1.1.2' name='Q-3.1.1.1.1.2' style='display:none;'>GOTO:4
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div><div id="ondeck" name="ondeck"><div id="doc" name="doc" style="display:none;"></div><div id='Q-1' name='Q-1' style='display:none;'> Are you interested in creating a Caregiver Authorization Affidavit?
-</div><div id='Q-1.1' name='Q-1.1' style='display:none;'> Great, lets get started! First, what is your full name?
-</div><div id='D-1.1.1' name='D-1.1.1' style='display:none;'> CAREGIVER AUTHORIZATION AFFIDAVIT<br>Massachusetts General Laws Chapter 201F<br><br>AUTHORIZING PARTY (Parent/Guardian)<br><br>
-</div><div id='Q-1.1.1' name='Q-1.1.1' style='display:none;'> Where do you currently live?
-</div><div id='Q-1.1.1.1' name='Q-1.1.1.1' style='display:none;'> What is your child's name?
-</div><div id='Q-1.1.1.1.1' name='Q-1.1.1.1.1' style='display:none;'> which phrase best describes your relationship to <x>child</x>: "the parent", "legal guardian", or "legal custodian"?
-</div><div id='Q-1.1.1.1.1.1' name='Q-1.1.1.1.1.1' style='display:none;'> Who is the caregiver you giving authority over <x>child</x>?
-</div><div id='Q-1.1.1.1.1.1.1' name='Q-1.1.1.1.1.1.1' style='display:none;'> where does <x>caregiver</x> live?
-</div><div id='D-1.1.1.1.1.1.1.1' name='D-1.1.1.1.1.1.1.1' style='display:none;'> I, <x>parent</x>, residing at <x>address</x>, am <x>relationship</x> of the minor child(ren) listed below.<br>I do hereby authorize <x>caregiver</x>, residing at <x>address2</x>,  to exercise concurrently the rights
-and responsibilities, except those prohibited below, that I possess relative to the education and health care of the minor children whose names and dates of birth are: <x>child</x><br><br>
-</div><div id='Q-1.1.1.1.1.1.1.1' name='Q-1.1.1.1.1.1.1.1' style='display:none;'>GOTO:2
-							
-							
-							
-</div><div id='Q-2' name='Q-2' style='display:none;'> The caregiver may NOT do the following: (If there are any specific acts you do not want the caregiver to perform, please state those acts here.)
-</div><div id='Q-2.1' name='Q-2.1' style='display:none;'> Is the following statement true? There are no court orders in effect that would prohibit me from exercising or conferring the rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)
-</div><div id='Q-2.1.1' name='Q-2.1.1' style='display:none;'> Great! Is the following statement true? I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.
-</div><div id='Q-2.1.1.1' name='Q-2.1.1.1' style='display:none;'> Glad to hear it. Is the following statement true? I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.
-</div><div id='Q-2.1.1.1.1' name='Q-2.1.1.1.1' style='display:none;'>Ok, last one. Is the following statement true? I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. 
-</div><div id='Q-2.1.1.1.1.1' name='Q-2.1.1.1.1.1' style='display:none;'>GOTO:4
-</div><div id='Q-2.1.1.1.1.2' name='Q-2.1.1.1.1.2' style='display:none;'>GOTO:3
-
-
-</div><div id='Q-2.1.1.1.2' name='Q-2.1.1.1.2' style='display:none;'>GOTO:3
+</div><div id='Q-3.1.1.1.2' name='Q-3.1.1.1.2' style='display:none;'>GOTO:4
 													
-</div><div id='Q-2.1.1.2' name='Q-2.1.1.2' style='display:none;'>GOTO:3
-</div><div id='Q-2.1.2' name='Q-2.1.2' style='display:none;'>GOTO:3
+</div><div id='Q-3.1.1.2' name='Q-3.1.1.2' style='display:none;'>GOTO:4
+</div><div id='Q-3.1.2' name='Q-3.1.2' style='display:none;'>GOTO:4
 
 
 
-</div><div id='Q-3' name='Q-3' style='display:none;'> I am sorry, but you are not able to fill out a Caregiver Authorization Affidavit at this time.  Please return when the previous statement is true.
+</div><div id='Q-4' name='Q-4' style='display:none;'> I am sorry, but you are not able to fill out a Caregiver Authorization Affidavit at this time.  Please return when the previous statement is true.
 
-</div><div id='Q-4' name='Q-4' style='display:none;'> Until what date (day, month, year) would you like this document to remain in effect? It cannot be more than two years from today.
-</div><div id='D-4.1' name='D-4.1' style='display:none;'> The caregiver may NOT do the following: <x>forbiddenacts</x><br><br> The following statements are true:<br> There are no court orders in effect that would prohibit me from exercising or conferringthe rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)<br>
+</div><div id='Q-5' name='Q-5' style='display:none;'> Until what date (day, month, year) would you like this document to remain in effect? It cannot be more than two years from today.
+</div><div id='D-5.1' name='D-5.1' style='display:none;'> The caregiver may NOT do the following: <x>forbiddenacts</x><br><br> The following statements are true:<br> There are no court orders in effect that would prohibit me from exercising or conferringthe rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)<br>
 	I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.<br>	
 	I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.<br>
 	I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. <br><br>
 	This document shall remain in effect until <x>date</x>, or until I notify the caregiver in writing that I have amended or revoked it.<br><br>
 	
-</div><div id='Q-4.1' name='Q-4.1' style='display:none;'> What is your telephone number?
-</div><div id='D-4.1.1' name='D-4.1.1' style='display:none;'> I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br> Signature:_________________________________<br> Printed Name:  <x>parent</x><br> Telephone Number: <x>phone</x>
-</div><div id='Q-4.1.1' name='Q-4.1.1' style='display:none;'> great, lets test this baby out
-</div><div id='A-1.1' name='A-1.1' style='display:none;'> Yes
-</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'></div><div id='A-1.1.1' name='A-1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1' name='A-href-1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1' name='A-target-1.1.1' style='display:none;'></div><div id='X-1.1.1' name='X-1.1.1' style='display:none;'>parent</div><div id='A-1.1.1.1' name='A-1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1' name='A-href-1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1' name='A-target-1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1' name='X-1.1.1.1' style='display:none;'>address</div><div id='A-1.1.1.1.1' name='A-1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1.1' name='A-href-1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1.1' name='A-target-1.1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1.1' name='X-1.1.1.1.1' style='display:none;'>child</div><div id='A-1.1.1.1.1.1' name='A-1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1.1.1' name='A-href-1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1.1.1' name='A-target-1.1.1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1.1.1' name='X-1.1.1.1.1.1' style='display:none;'>relationship</div><div id='A-1.1.1.1.1.1.1' name='A-1.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1.1.1.1' name='A-href-1.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1.1.1.1' name='A-target-1.1.1.1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1.1.1.1' name='X-1.1.1.1.1.1.1' style='display:none;'>caregiver</div><div id='A-1.1.1.1.1.1.1.1' name='A-1.1.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1.1.1.1.1' name='A-href-1.1.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1.1.1.1.1' name='A-target-1.1.1.1.1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1.1.1.1.1' name='X-1.1.1.1.1.1.1.1' style='display:none;'>address2</div><div id='A-1.2' name='A-1.2' style='display:none;'> No (A[javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and mail it to the address provided for the FBI.')]: Yes.)
+</div><div id='Q-5.1' name='Q-5.1' style='display:none;'> What is your telephone number?
+</div><div id='D-5.1.1' name='D-5.1.1' style='display:none;'> I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br> Signature:_________________________________<br> Printed Name:  <x>parent</x><br> Telephone Number: <x>phone</x><br><br>
+</div><div id='Q-5.1.1' name='Q-5.1.1' style='display:none;'>GOTO:6
 
-</div><div id='A-href-1.2' name='A-href-1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.2' name='A-target-1.2' style='display:none;'></div><div id='X-1.2' name='X-1.2' style='display:none;'></div><div id='A-2.1' name='A-2.1' style='display:none;'><variable></div><div id='A-href-2.1' name='A-href-2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1' name='A-target-2.1' style='display:none;'></div><div id='X-2.1' name='X-2.1' style='display:none;'>forbiddenacts</div><div id='A-2.1.1' name='A-2.1.1' style='display:none;'> Yes
-</div><div id='A-href-2.1.1' name='A-href-2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1' name='A-target-2.1.1' style='display:none;'></div><div id='X-2.1.1' name='X-2.1.1' style='display:none;'></div><div id='A-2.1.1.1' name='A-2.1.1.1' style='display:none;'> Yes
-</div><div id='A-href-2.1.1.1' name='A-href-2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1' name='A-target-2.1.1.1' style='display:none;'></div><div id='X-2.1.1.1' name='X-2.1.1.1' style='display:none;'></div><div id='A-2.1.1.1.1' name='A-2.1.1.1.1' style='display:none;'> Yes
-</div><div id='A-href-2.1.1.1.1' name='A-href-2.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1' name='A-target-2.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1' name='X-2.1.1.1.1' style='display:none;'></div><div id='A-2.1.1.1.1.1' name='A-2.1.1.1.1.1' style='display:none;'> Yes
-</div><div id='A-href-2.1.1.1.1.1' name='A-href-2.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1' name='A-target-2.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1' name='X-2.1.1.1.1.1' style='display:none;'></div><div id='A-2.1.1.1.1.2' name='A-2.1.1.1.1.2' style='display:none;'> No
-</div><div id='A-href-2.1.1.1.1.2' name='A-href-2.1.1.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.2' name='A-target-2.1.1.1.1.2' style='display:none;'></div><div id='X-2.1.1.1.1.2' name='X-2.1.1.1.1.2' style='display:none;'></div><div id='A-2.1.1.1.2' name='A-2.1.1.1.2' style='display:none;'> No
-</div><div id='A-href-2.1.1.1.2' name='A-href-2.1.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.2' name='A-target-2.1.1.1.2' style='display:none;'></div><div id='X-2.1.1.1.2' name='X-2.1.1.1.2' style='display:none;'></div><div id='A-2.1.1.2' name='A-2.1.1.2' style='display:none;'> No
-</div><div id='A-href-2.1.1.2' name='A-href-2.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2' name='A-target-2.1.1.2' style='display:none;'></div><div id='X-2.1.1.2' name='X-2.1.1.2' style='display:none;'></div><div id='A-2.1.2' name='A-2.1.2' style='display:none;'> No
-</div><div id='A-href-2.1.2' name='A-href-2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.2' name='A-target-2.1.2' style='display:none;'></div><div id='X-2.1.2' name='X-2.1.2' style='display:none;'></div><div id='A-4.1' name='A-4.1' style='display:none;'><variable></div><div id='A-href-4.1' name='A-href-4.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1' name='A-target-4.1' style='display:none;'></div><div id='X-4.1' name='X-4.1' style='display:none;'>date</div><div id='A-4.1.1' name='A-4.1.1' style='display:none;'><variable></div><div id='A-href-4.1.1' name='A-href-4.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1' name='A-target-4.1.1' style='display:none;'></div><div id='X-4.1.1' name='X-4.1.1' style='display:none;'>phone</div><div id='A-4.1.1.1' name='A-4.1.1.1' style='display:none;'> Yes.
+</div><div id='Q-6' name='Q-6' style='display:none;'> What is <x>caregiver</x>'s relationship to <x>child</x>? (i.e. aunt, uncle, godfather, grandmother, etc)
+</div><div id='D-6.1' name='D-6.1' style='display:none;'> 2. WITNESSES TO AUTHORIZING PARTY SIGNATURE<br> (To be signed by persons over the age of 18 who are not the designated caregiver.) (To be signed by persons over the age of 18 who are not the designated caregiver.)<br><br>
+	Witness #1 Signature: ____________________________________<br>
+	Printed Name: ____________________________________<br>
+	Address:   ____________________________________<br>
+	Telephone: ____________________________________<br><br>
 
+	Witness #2 Signature: ____________________________________<br>
+	Printed Name:         ____________________________________<br>
+	Address:              ____________________________________<br>
+	Telephone:            ____________________________________<br><br>
 
-
-
-
+</div><div id='Q-6.1' name='Q-6.1' style='display:none;'> What is <x>caregiver</x>'s telephone number? 
+</div><div id='D-6.1.1' name='D-6.1.1' style='display:none;'> 3. NOTARIZATION OF AUTHORIZING PARTY'S SIGNATURE<br><br>
 
 
+Commonwealth of Massachusetts<br>
+______________, ss<br>
+On this date, _______________, before me, the undersigned notary public, personally appeared
+_________________________________________, proved to me through satisfactory evidence of
+identification, which was _________________________________, to be the person whose name is signed
+on the preceding document, and swore under the pains and penalties of perjury that the foregoing
+statements are true.<br>
+Signature and seal of notary: _____________________________<br>
+Printed name of notary: _____________________________<br>
+My commission expires: _____________________________<br><br>
+
+</div><div id='Q-6.1.1' name='Q-6.1.1' style='display:none;'>  Great job! That is all the information needed at this time. 
+</div><div id='D-6.1.1.1' name='D-6.1.1.1' style='display:none;'> 4. CAREGIVER ACKNOWLEDGMENT<br><br>
+	I,<x>caregiver</x>, am at least 18 years of age and the above child currently resides with me at <x>address2</x>. 
+	I am the child's <x>relationship2</x>.<br>
+	
+	I understand that I may, without obtaining further consent from a parent, legal custodian
+	or legal guardian of the child, exercise concurrent rights and responsibilities relative
+	to the education and health care of the child, except those rights and responsibilities
+	prohibited above. However, I may not knowingly make a decision that conflicts with the
+	decision of the child's parent, legal guardian or legal custodian.<br>
+	
+	I understand that, if the affidavit is amended or revoked, I must provide the amended
+	affidavit or revocation to all parties to whom I have provided this affidavit prior to further
+	exercising any rights or responsibilities under the affidavit.<br>
+
+	I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br>
+
+	Signature of caregiver: ____________________________________<br>
+	Printed Name:     <x>caregiver</x><br>
+	Telephone:        <x>phone2</x><br>
+	date:__________           <br><br>
+		
+</div><div id='Q-6.1.1.1' name='Q-6.1.1.1' style='display:none;'>GOTO:7
+
+</div><div id='Q-7' name='Q-7' style='display:none;'> You are nearly done drafting your Caregiver Authorization Affidavit.  
+Once you print out the document, you must sign it in the presence of two witnesses, get the form notarized, and get <x>caregiver</x>'s signature.
+</div><div id='A-1.1' name='A-1.1' style='display:none;'> Continue
+</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'></div><div id='A-1.1.1' name='A-1.1.1' style='display:none;'> Continue
+</div><div id='A-href-1.1.1' name='A-href-1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1' name='A-target-1.1.1' style='display:none;'></div><div id='X-1.1.1' name='X-1.1.1' style='display:none;'></div><div id='A-2.1' name='A-2.1' style='display:none;'> Yes
+</div><div id='A-href-2.1' name='A-href-2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1' name='A-target-2.1' style='display:none;'></div><div id='X-2.1' name='X-2.1' style='display:none;'></div><div id='A-2.1.1' name='A-2.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1' name='A-href-2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1' name='A-target-2.1.1' style='display:none;'></div><div id='X-2.1.1' name='X-2.1.1' style='display:none;'>parent</div><div id='A-2.1.1.1' name='A-2.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1' name='A-href-2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1' name='A-target-2.1.1.1' style='display:none;'></div><div id='X-2.1.1.1' name='X-2.1.1.1' style='display:none;'>address</div><div id='A-2.1.1.1.1' name='A-2.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1' name='A-href-2.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1' name='A-target-2.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1' name='X-2.1.1.1.1' style='display:none;'>child</div><div id='A-2.1.1.1.1.1' name='A-2.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1.1' name='A-href-2.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1' name='A-target-2.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1' name='X-2.1.1.1.1.1' style='display:none;'>birth</div><div id='A-2.1.1.1.1.1.1' name='A-2.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1.1.1' name='A-href-2.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1.1' name='A-target-2.1.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1.1' name='X-2.1.1.1.1.1.1' style='display:none;'>relationship</div><div id='A-2.1.1.1.1.1.1.1' name='A-2.1.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1.1.1.1' name='A-href-2.1.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1.1.1' name='A-target-2.1.1.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1.1.1' name='X-2.1.1.1.1.1.1.1' style='display:none;'>caregiver</div><div id='A-2.1.1.1.1.1.1.1.1' name='A-2.1.1.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1.1.1.1.1' name='A-href-2.1.1.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1.1.1.1' name='A-target-2.1.1.1.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1.1.1.1' name='X-2.1.1.1.1.1.1.1.1' style='display:none;'>address2</div><div id='A-2.2' name='A-2.2' style='display:none;'> No 
+
+</div><div id='A-href-2.2' name='A-href-2.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.2' name='A-target-2.2' style='display:none;'></div><div id='X-2.2' name='X-2.2' style='display:none;'></div><div id='A-3.1' name='A-3.1' style='display:none;'><variable></div><div id='A-href-3.1' name='A-href-3.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1' name='A-target-3.1' style='display:none;'></div><div id='X-3.1' name='X-3.1' style='display:none;'>forbiddenacts</div><div id='A-3.1.1' name='A-3.1.1' style='display:none;'> Yes
+</div><div id='A-href-3.1.1' name='A-href-3.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1' name='A-target-3.1.1' style='display:none;'></div><div id='X-3.1.1' name='X-3.1.1' style='display:none;'></div><div id='A-3.1.1.1' name='A-3.1.1.1' style='display:none;'> Yes
+</div><div id='A-href-3.1.1.1' name='A-href-3.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1' name='A-target-3.1.1.1' style='display:none;'></div><div id='X-3.1.1.1' name='X-3.1.1.1' style='display:none;'></div><div id='A-3.1.1.1.1' name='A-3.1.1.1.1' style='display:none;'> Yes
+</div><div id='A-href-3.1.1.1.1' name='A-href-3.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1.1' name='A-target-3.1.1.1.1' style='display:none;'></div><div id='X-3.1.1.1.1' name='X-3.1.1.1.1' style='display:none;'></div><div id='A-3.1.1.1.1.1' name='A-3.1.1.1.1.1' style='display:none;'> Yes
+</div><div id='A-href-3.1.1.1.1.1' name='A-href-3.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1.1.1' name='A-target-3.1.1.1.1.1' style='display:none;'></div><div id='X-3.1.1.1.1.1' name='X-3.1.1.1.1.1' style='display:none;'></div><div id='A-3.1.1.1.1.2' name='A-3.1.1.1.1.2' style='display:none;'> No
+</div><div id='A-href-3.1.1.1.1.2' name='A-href-3.1.1.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1.1.2' name='A-target-3.1.1.1.1.2' style='display:none;'></div><div id='X-3.1.1.1.1.2' name='X-3.1.1.1.1.2' style='display:none;'></div><div id='A-3.1.1.1.2' name='A-3.1.1.1.2' style='display:none;'> No
+</div><div id='A-href-3.1.1.1.2' name='A-href-3.1.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1.2' name='A-target-3.1.1.1.2' style='display:none;'></div><div id='X-3.1.1.1.2' name='X-3.1.1.1.2' style='display:none;'></div><div id='A-3.1.1.2' name='A-3.1.1.2' style='display:none;'> No
+</div><div id='A-href-3.1.1.2' name='A-href-3.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.2' name='A-target-3.1.1.2' style='display:none;'></div><div id='X-3.1.1.2' name='X-3.1.1.2' style='display:none;'></div><div id='A-3.1.2' name='A-3.1.2' style='display:none;'> No
+</div><div id='A-href-3.1.2' name='A-href-3.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2' name='A-target-3.1.2' style='display:none;'></div><div id='X-3.1.2' name='X-3.1.2' style='display:none;'></div><div id='A-5.1' name='A-5.1' style='display:none;'><variable></div><div id='A-href-5.1' name='A-href-5.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1' name='A-target-5.1' style='display:none;'></div><div id='X-5.1' name='X-5.1' style='display:none;'>date</div><div id='A-5.1.1' name='A-5.1.1' style='display:none;'><variable></div><div id='A-href-5.1.1' name='A-href-5.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1' name='A-target-5.1.1' style='display:none;'></div><div id='X-5.1.1' name='X-5.1.1' style='display:none;'>phone</div><div id='A-6.1' name='A-6.1' style='display:none;'><variable></div><div id='A-href-6.1' name='A-href-6.1' style='display:none;'>javascript:void('');</div><div id='A-target-6.1' name='A-target-6.1' style='display:none;'></div><div id='X-6.1' name='X-6.1' style='display:none;'>relationship2</div><div id='A-6.1.1' name='A-6.1.1' style='display:none;'><variable></div><div id='A-href-6.1.1' name='A-href-6.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-6.1.1' name='A-target-6.1.1' style='display:none;'></div><div id='X-6.1.1' name='X-6.1.1' style='display:none;'>phone2</div><div id='A-6.1.1.1' name='A-6.1.1.1' style='display:none;'> Continue
+</div><div id='A-href-6.1.1.1' name='A-href-6.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-6.1.1.1' name='A-target-6.1.1.1' style='display:none;'></div><div id='X-6.1.1.1' name='X-6.1.1.1' style='display:none;'></div><div id='A-7.1' name='A-7.1' style='display:none;'> Understood.  I would like to proceed to my document. 
+		
 
 
 
 
 
+</div><div id='A-href-7.1' name='A-href-7.1' style='display:none;'>javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and once you have the necessary signatures it is complete')</div><div id='A-target-7.1' name='A-target-7.1' style='display:none;'></div><div id='X-7.1' name='X-7.1' style='display:none;'></div></div><textarea id="original" name="original" style="display:none;" disabled="disabled"><div id="doc" name="doc" style="display:none;"></div><div id='Q-1' name='Q-1' style='display:none;'> When the parents of children are not able or available to provide care for their child, another person, often a family member, steps in to become the child's caregiver. 
+One way for a person to become a child's caregiver without going through a court is Caregiver Authorization. Caregiver Authorization is when the parent or parents give the caregiver written permission to make educational and medical decisions.
+</div><div id='Q-1.1' name='Q-1.1' style='display:none;'> A caregiver authorization form requires the signature of a parent, two witness signatures, and has to be notarized. The form itself only takes about ten minutes to fill out.  
+</div><div id='Q-1.1.1' name='Q-1.1.1' style='display:none;'>GOTO:2	
+
+</div><div id='Q-2' name='Q-2' style='display:none;'> Are you interested in creating a Caregiver Authorization Affidavit?
+</div><div id='Q-2.1' name='Q-2.1' style='display:none;'> Great, lets get started! First, what is your full name?
+</div><div id='D-2.1.1' name='D-2.1.1' style='display:none;'><p style="text-align:center">CAREGIVER AUTHORIZATION AFFIDAVIT<br>Massachusetts General Laws Chapter 201F<br><br>
+</div><div id='Q-2.1.1' name='Q-2.1.1' style='display:none;'> Where do you currently live? (ex: 123 real street, Boston MA, 02108)
+</div><div id='Q-2.1.1.1' name='Q-2.1.1.1' style='display:none;'> What is your child's name?
+</div><div id='Q-2.1.1.1.1' name='Q-2.1.1.1.1' style='display:none;'> What is <x>child</x>'s date of birth? (Month/Day/Year)
+</div><div id='Q-2.1.1.1.1.1' name='Q-2.1.1.1.1.1' style='display:none;'> which phrase best describes your relationship to <x>child</x>: "parent", "legal guardian", or "legal custodian"?
+</div><div id='Q-2.1.1.1.1.1.1' name='Q-2.1.1.1.1.1.1' style='display:none;'> Who is the caregiver you giving authority over <x>child</x>?
+</div><div id='Q-2.1.1.1.1.1.1.1' name='Q-2.1.1.1.1.1.1.1' style='display:none;'> where does <x>caregiver</x> live? (ex: 123 real street, Boston MA, 02108)
+</div><div id='D-2.1.1.1.1.1.1.1.1' name='D-2.1.1.1.1.1.1.1.1' style='display:none;'>1) AUTHORIZING PARTY (Parent/Guardian)<br><br> I, <x>parent</x>, residing at <x>address</x>, am the <x>relationship</x> of the minor child listed below.<br>I do hereby authorize <x>caregiver</x>, residing at <x>address2</x>,  to exercise concurrently the rights
+								and responsibilities, except those prohibited below, that I possess relative to the education and health care of the minor child whose name and date of birth is:<br> <x>child</x>   <x>birth</x><br><br>
+</div><div id='Q-2.1.1.1.1.1.1.1.1' name='Q-2.1.1.1.1.1.1.1.1' style='display:none;'>GOTO:3
+														
+
+</div><div id='Q-3' name='Q-3' style='display:none;'> The caregiver may NOT do the following: (If there are any specific acts you do not want the caregiver to perform, please state those acts here.)
+</div><div id='Q-3.1' name='Q-3.1' style='display:none;'> Is the following statement true? There are no court orders in effect that would prohibit me from exercising or conferring the rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)
+</div><div id='Q-3.1.1' name='Q-3.1.1' style='display:none;'> Great! Is the following statement true? I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.
+</div><div id='Q-3.1.1.1' name='Q-3.1.1.1' style='display:none;'> Glad to hear it. Is the following statement true? I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.
+</div><div id='Q-3.1.1.1.1' name='Q-3.1.1.1.1' style='display:none;'>Ok, last one. Is the following statement true? I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. 
+</div><div id='Q-3.1.1.1.1.1' name='Q-3.1.1.1.1.1' style='display:none;'>GOTO:5
+</div><div id='Q-3.1.1.1.1.2' name='Q-3.1.1.1.1.2' style='display:none;'>GOTO:4
 
 
-
-
-
-
-
-
-
-
-</div><div id='A-href-4.1.1.1' name='A-href-4.1.1.1' style='display:none;'>javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and mail it to the address provided for the FBI.')</div><div id='A-target-4.1.1.1' name='A-target-4.1.1.1' style='display:none;'></div><div id='X-4.1.1.1' name='X-4.1.1.1' style='display:none;'></div></div><textarea id="original" name="original" style="display:none;" disabled="disabled"><div id="doc" name="doc" style="display:none;"></div><div id='Q-1' name='Q-1' style='display:none;'> Are you interested in creating a Caregiver Authorization Affidavit?
-</div><div id='Q-1.1' name='Q-1.1' style='display:none;'> Great, lets get started! First, what is your full name?
-</div><div id='D-1.1.1' name='D-1.1.1' style='display:none;'> CAREGIVER AUTHORIZATION AFFIDAVIT<br>Massachusetts General Laws Chapter 201F<br><br>AUTHORIZING PARTY (Parent/Guardian)<br><br>
-</div><div id='Q-1.1.1' name='Q-1.1.1' style='display:none;'> Where do you currently live?
-</div><div id='Q-1.1.1.1' name='Q-1.1.1.1' style='display:none;'> What is your child's name?
-</div><div id='Q-1.1.1.1.1' name='Q-1.1.1.1.1' style='display:none;'> which phrase best describes your relationship to <x>child</x>: "the parent", "legal guardian", or "legal custodian"?
-</div><div id='Q-1.1.1.1.1.1' name='Q-1.1.1.1.1.1' style='display:none;'> Who is the caregiver you giving authority over <x>child</x>?
-</div><div id='Q-1.1.1.1.1.1.1' name='Q-1.1.1.1.1.1.1' style='display:none;'> where does <x>caregiver</x> live?
-</div><div id='D-1.1.1.1.1.1.1.1' name='D-1.1.1.1.1.1.1.1' style='display:none;'> I, <x>parent</x>, residing at <x>address</x>, am <x>relationship</x> of the minor child(ren) listed below.<br>I do hereby authorize <x>caregiver</x>, residing at <x>address2</x>,  to exercise concurrently the rights
-and responsibilities, except those prohibited below, that I possess relative to the education and health care of the minor children whose names and dates of birth are: <x>child</x><br><br>
-</div><div id='Q-1.1.1.1.1.1.1.1' name='Q-1.1.1.1.1.1.1.1' style='display:none;'>GOTO:2
-							
-							
-							
-</div><div id='Q-2' name='Q-2' style='display:none;'> The caregiver may NOT do the following: (If there are any specific acts you do not want the caregiver to perform, please state those acts here.)
-</div><div id='Q-2.1' name='Q-2.1' style='display:none;'> Is the following statement true? There are no court orders in effect that would prohibit me from exercising or conferring the rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)
-</div><div id='Q-2.1.1' name='Q-2.1.1' style='display:none;'> Great! Is the following statement true? I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.
-</div><div id='Q-2.1.1.1' name='Q-2.1.1.1' style='display:none;'> Glad to hear it. Is the following statement true? I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.
-</div><div id='Q-2.1.1.1.1' name='Q-2.1.1.1.1' style='display:none;'>Ok, last one. Is the following statement true? I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. 
-</div><div id='Q-2.1.1.1.1.1' name='Q-2.1.1.1.1.1' style='display:none;'>GOTO:4
-</div><div id='Q-2.1.1.1.1.2' name='Q-2.1.1.1.1.2' style='display:none;'>GOTO:3
-
-
-</div><div id='Q-2.1.1.1.2' name='Q-2.1.1.1.2' style='display:none;'>GOTO:3
+</div><div id='Q-3.1.1.1.2' name='Q-3.1.1.1.2' style='display:none;'>GOTO:4
 													
-</div><div id='Q-2.1.1.2' name='Q-2.1.1.2' style='display:none;'>GOTO:3
-</div><div id='Q-2.1.2' name='Q-2.1.2' style='display:none;'>GOTO:3
+</div><div id='Q-3.1.1.2' name='Q-3.1.1.2' style='display:none;'>GOTO:4
+</div><div id='Q-3.1.2' name='Q-3.1.2' style='display:none;'>GOTO:4
 
 
 
-</div><div id='Q-3' name='Q-3' style='display:none;'> I am sorry, but you are not able to fill out a Caregiver Authorization Affidavit at this time.  Please return when the previous statement is true.
+</div><div id='Q-4' name='Q-4' style='display:none;'> I am sorry, but you are not able to fill out a Caregiver Authorization Affidavit at this time.  Please return when the previous statement is true.
 
-</div><div id='Q-4' name='Q-4' style='display:none;'> Until what date (day, month, year) would you like this document to remain in effect? It cannot be more than two years from today.
-</div><div id='D-4.1' name='D-4.1' style='display:none;'> The caregiver may NOT do the following: <x>forbiddenacts</x><br><br> The following statements are true:<br> There are no court orders in effect that would prohibit me from exercising or conferringthe rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)<br>
+</div><div id='Q-5' name='Q-5' style='display:none;'> Until what date (day, month, year) would you like this document to remain in effect? It cannot be more than two years from today.
+</div><div id='D-5.1' name='D-5.1' style='display:none;'> The caregiver may NOT do the following: <x>forbiddenacts</x><br><br> The following statements are true:<br> There are no court orders in effect that would prohibit me from exercising or conferringthe rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)<br>
 	I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.<br>	
 	I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.<br>
 	I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. <br><br>
 	This document shall remain in effect until <x>date</x>, or until I notify the caregiver in writing that I have amended or revoked it.<br><br>
 	
-</div><div id='Q-4.1' name='Q-4.1' style='display:none;'> What is your telephone number?
-</div><div id='D-4.1.1' name='D-4.1.1' style='display:none;'> I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br> Signature:_________________________________<br> Printed Name:  <x>parent</x><br> Telephone Number: <x>phone</x>
-</div><div id='Q-4.1.1' name='Q-4.1.1' style='display:none;'> great, lets test this baby out
-</div><div id='A-1.1' name='A-1.1' style='display:none;'> Yes
-</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'></div><div id='A-1.1.1' name='A-1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1' name='A-href-1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1' name='A-target-1.1.1' style='display:none;'></div><div id='X-1.1.1' name='X-1.1.1' style='display:none;'>parent</div><div id='A-1.1.1.1' name='A-1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1' name='A-href-1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1' name='A-target-1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1' name='X-1.1.1.1' style='display:none;'>address</div><div id='A-1.1.1.1.1' name='A-1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1.1' name='A-href-1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1.1' name='A-target-1.1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1.1' name='X-1.1.1.1.1' style='display:none;'>child</div><div id='A-1.1.1.1.1.1' name='A-1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1.1.1' name='A-href-1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1.1.1' name='A-target-1.1.1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1.1.1' name='X-1.1.1.1.1.1' style='display:none;'>relationship</div><div id='A-1.1.1.1.1.1.1' name='A-1.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1.1.1.1' name='A-href-1.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1.1.1.1' name='A-target-1.1.1.1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1.1.1.1' name='X-1.1.1.1.1.1.1' style='display:none;'>caregiver</div><div id='A-1.1.1.1.1.1.1.1' name='A-1.1.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-1.1.1.1.1.1.1.1' name='A-href-1.1.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1.1.1.1.1.1' name='A-target-1.1.1.1.1.1.1.1' style='display:none;'></div><div id='X-1.1.1.1.1.1.1.1' name='X-1.1.1.1.1.1.1.1' style='display:none;'>address2</div><div id='A-1.2' name='A-1.2' style='display:none;'> No (A[javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and mail it to the address provided for the FBI.')]: Yes.)
+</div><div id='Q-5.1' name='Q-5.1' style='display:none;'> What is your telephone number?
+</div><div id='D-5.1.1' name='D-5.1.1' style='display:none;'> I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br> Signature:_________________________________<br> Printed Name:  <x>parent</x><br> Telephone Number: <x>phone</x><br><br>
+</div><div id='Q-5.1.1' name='Q-5.1.1' style='display:none;'>GOTO:6
 
-</div><div id='A-href-1.2' name='A-href-1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.2' name='A-target-1.2' style='display:none;'></div><div id='X-1.2' name='X-1.2' style='display:none;'></div><div id='A-2.1' name='A-2.1' style='display:none;'><variable></div><div id='A-href-2.1' name='A-href-2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1' name='A-target-2.1' style='display:none;'></div><div id='X-2.1' name='X-2.1' style='display:none;'>forbiddenacts</div><div id='A-2.1.1' name='A-2.1.1' style='display:none;'> Yes
-</div><div id='A-href-2.1.1' name='A-href-2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1' name='A-target-2.1.1' style='display:none;'></div><div id='X-2.1.1' name='X-2.1.1' style='display:none;'></div><div id='A-2.1.1.1' name='A-2.1.1.1' style='display:none;'> Yes
-</div><div id='A-href-2.1.1.1' name='A-href-2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1' name='A-target-2.1.1.1' style='display:none;'></div><div id='X-2.1.1.1' name='X-2.1.1.1' style='display:none;'></div><div id='A-2.1.1.1.1' name='A-2.1.1.1.1' style='display:none;'> Yes
-</div><div id='A-href-2.1.1.1.1' name='A-href-2.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1' name='A-target-2.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1' name='X-2.1.1.1.1' style='display:none;'></div><div id='A-2.1.1.1.1.1' name='A-2.1.1.1.1.1' style='display:none;'> Yes
-</div><div id='A-href-2.1.1.1.1.1' name='A-href-2.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1' name='A-target-2.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1' name='X-2.1.1.1.1.1' style='display:none;'></div><div id='A-2.1.1.1.1.2' name='A-2.1.1.1.1.2' style='display:none;'> No
-</div><div id='A-href-2.1.1.1.1.2' name='A-href-2.1.1.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.2' name='A-target-2.1.1.1.1.2' style='display:none;'></div><div id='X-2.1.1.1.1.2' name='X-2.1.1.1.1.2' style='display:none;'></div><div id='A-2.1.1.1.2' name='A-2.1.1.1.2' style='display:none;'> No
-</div><div id='A-href-2.1.1.1.2' name='A-href-2.1.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.2' name='A-target-2.1.1.1.2' style='display:none;'></div><div id='X-2.1.1.1.2' name='X-2.1.1.1.2' style='display:none;'></div><div id='A-2.1.1.2' name='A-2.1.1.2' style='display:none;'> No
-</div><div id='A-href-2.1.1.2' name='A-href-2.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2' name='A-target-2.1.1.2' style='display:none;'></div><div id='X-2.1.1.2' name='X-2.1.1.2' style='display:none;'></div><div id='A-2.1.2' name='A-2.1.2' style='display:none;'> No
-</div><div id='A-href-2.1.2' name='A-href-2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.2' name='A-target-2.1.2' style='display:none;'></div><div id='X-2.1.2' name='X-2.1.2' style='display:none;'></div><div id='A-4.1' name='A-4.1' style='display:none;'><variable></div><div id='A-href-4.1' name='A-href-4.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1' name='A-target-4.1' style='display:none;'></div><div id='X-4.1' name='X-4.1' style='display:none;'>date</div><div id='A-4.1.1' name='A-4.1.1' style='display:none;'><variable></div><div id='A-href-4.1.1' name='A-href-4.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-4.1.1' name='A-target-4.1.1' style='display:none;'></div><div id='X-4.1.1' name='X-4.1.1' style='display:none;'>phone</div><div id='A-4.1.1.1' name='A-4.1.1.1' style='display:none;'> Yes.
+</div><div id='Q-6' name='Q-6' style='display:none;'> What is <x>caregiver</x>'s relationship to <x>child</x>? (i.e. aunt, uncle, godfather, grandmother, etc)
+</div><div id='D-6.1' name='D-6.1' style='display:none;'> 2. WITNESSES TO AUTHORIZING PARTY SIGNATURE<br> (To be signed by persons over the age of 18 who are not the designated caregiver.) (To be signed by persons over the age of 18 who are not the designated caregiver.)<br><br>
+	Witness #1 Signature: ____________________________________<br>
+	Printed Name: ____________________________________<br>
+	Address:   ____________________________________<br>
+	Telephone: ____________________________________<br><br>
 
+	Witness #2 Signature: ____________________________________<br>
+	Printed Name:         ____________________________________<br>
+	Address:              ____________________________________<br>
+	Telephone:            ____________________________________<br><br>
 
-
-
-
+</div><div id='Q-6.1' name='Q-6.1' style='display:none;'> What is <x>caregiver</x>'s telephone number? 
+</div><div id='D-6.1.1' name='D-6.1.1' style='display:none;'> 3. NOTARIZATION OF AUTHORIZING PARTY'S SIGNATURE<br><br>
 
 
+Commonwealth of Massachusetts<br>
+______________, ss<br>
+On this date, _______________, before me, the undersigned notary public, personally appeared
+_________________________________________, proved to me through satisfactory evidence of
+identification, which was _________________________________, to be the person whose name is signed
+on the preceding document, and swore under the pains and penalties of perjury that the foregoing
+statements are true.<br>
+Signature and seal of notary: _____________________________<br>
+Printed name of notary: _____________________________<br>
+My commission expires: _____________________________<br><br>
+
+</div><div id='Q-6.1.1' name='Q-6.1.1' style='display:none;'>  Great job! That is all the information needed at this time. 
+</div><div id='D-6.1.1.1' name='D-6.1.1.1' style='display:none;'> 4. CAREGIVER ACKNOWLEDGMENT<br><br>
+	I,<x>caregiver</x>, am at least 18 years of age and the above child currently resides with me at <x>address2</x>. 
+	I am the child's <x>relationship2</x>.<br>
+	
+	I understand that I may, without obtaining further consent from a parent, legal custodian
+	or legal guardian of the child, exercise concurrent rights and responsibilities relative
+	to the education and health care of the child, except those rights and responsibilities
+	prohibited above. However, I may not knowingly make a decision that conflicts with the
+	decision of the child's parent, legal guardian or legal custodian.<br>
+	
+	I understand that, if the affidavit is amended or revoked, I must provide the amended
+	affidavit or revocation to all parties to whom I have provided this affidavit prior to further
+	exercising any rights or responsibilities under the affidavit.<br>
+
+	I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br>
+
+	Signature of caregiver: ____________________________________<br>
+	Printed Name:     <x>caregiver</x><br>
+	Telephone:        <x>phone2</x><br>
+	date:__________           <br><br>
+		
+</div><div id='Q-6.1.1.1' name='Q-6.1.1.1' style='display:none;'>GOTO:7
+
+</div><div id='Q-7' name='Q-7' style='display:none;'> You are nearly done drafting your Caregiver Authorization Affidavit.  
+Once you print out the document, you must sign it in the presence of two witnesses, get the form notarized, and get <x>caregiver</x>'s signature.
+</div><div id='A-1.1' name='A-1.1' style='display:none;'> Continue
+</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'></div><div id='A-1.1.1' name='A-1.1.1' style='display:none;'> Continue
+</div><div id='A-href-1.1.1' name='A-href-1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1' name='A-target-1.1.1' style='display:none;'></div><div id='X-1.1.1' name='X-1.1.1' style='display:none;'></div><div id='A-2.1' name='A-2.1' style='display:none;'> Yes
+</div><div id='A-href-2.1' name='A-href-2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1' name='A-target-2.1' style='display:none;'></div><div id='X-2.1' name='X-2.1' style='display:none;'></div><div id='A-2.1.1' name='A-2.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1' name='A-href-2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1' name='A-target-2.1.1' style='display:none;'></div><div id='X-2.1.1' name='X-2.1.1' style='display:none;'>parent</div><div id='A-2.1.1.1' name='A-2.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1' name='A-href-2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1' name='A-target-2.1.1.1' style='display:none;'></div><div id='X-2.1.1.1' name='X-2.1.1.1' style='display:none;'>address</div><div id='A-2.1.1.1.1' name='A-2.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1' name='A-href-2.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1' name='A-target-2.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1' name='X-2.1.1.1.1' style='display:none;'>child</div><div id='A-2.1.1.1.1.1' name='A-2.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1.1' name='A-href-2.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1' name='A-target-2.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1' name='X-2.1.1.1.1.1' style='display:none;'>birth</div><div id='A-2.1.1.1.1.1.1' name='A-2.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1.1.1' name='A-href-2.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1.1' name='A-target-2.1.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1.1' name='X-2.1.1.1.1.1.1' style='display:none;'>relationship</div><div id='A-2.1.1.1.1.1.1.1' name='A-2.1.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1.1.1.1' name='A-href-2.1.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1.1.1' name='A-target-2.1.1.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1.1.1' name='X-2.1.1.1.1.1.1.1' style='display:none;'>caregiver</div><div id='A-2.1.1.1.1.1.1.1.1' name='A-2.1.1.1.1.1.1.1.1' style='display:none;'><variable></div><div id='A-href-2.1.1.1.1.1.1.1.1' name='A-href-2.1.1.1.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1.1.1.1.1.1' name='A-target-2.1.1.1.1.1.1.1.1' style='display:none;'></div><div id='X-2.1.1.1.1.1.1.1.1' name='X-2.1.1.1.1.1.1.1.1' style='display:none;'>address2</div><div id='A-2.2' name='A-2.2' style='display:none;'> No 
+
+</div><div id='A-href-2.2' name='A-href-2.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.2' name='A-target-2.2' style='display:none;'></div><div id='X-2.2' name='X-2.2' style='display:none;'></div><div id='A-3.1' name='A-3.1' style='display:none;'><variable></div><div id='A-href-3.1' name='A-href-3.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1' name='A-target-3.1' style='display:none;'></div><div id='X-3.1' name='X-3.1' style='display:none;'>forbiddenacts</div><div id='A-3.1.1' name='A-3.1.1' style='display:none;'> Yes
+</div><div id='A-href-3.1.1' name='A-href-3.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1' name='A-target-3.1.1' style='display:none;'></div><div id='X-3.1.1' name='X-3.1.1' style='display:none;'></div><div id='A-3.1.1.1' name='A-3.1.1.1' style='display:none;'> Yes
+</div><div id='A-href-3.1.1.1' name='A-href-3.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1' name='A-target-3.1.1.1' style='display:none;'></div><div id='X-3.1.1.1' name='X-3.1.1.1' style='display:none;'></div><div id='A-3.1.1.1.1' name='A-3.1.1.1.1' style='display:none;'> Yes
+</div><div id='A-href-3.1.1.1.1' name='A-href-3.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1.1' name='A-target-3.1.1.1.1' style='display:none;'></div><div id='X-3.1.1.1.1' name='X-3.1.1.1.1' style='display:none;'></div><div id='A-3.1.1.1.1.1' name='A-3.1.1.1.1.1' style='display:none;'> Yes
+</div><div id='A-href-3.1.1.1.1.1' name='A-href-3.1.1.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1.1.1' name='A-target-3.1.1.1.1.1' style='display:none;'></div><div id='X-3.1.1.1.1.1' name='X-3.1.1.1.1.1' style='display:none;'></div><div id='A-3.1.1.1.1.2' name='A-3.1.1.1.1.2' style='display:none;'> No
+</div><div id='A-href-3.1.1.1.1.2' name='A-href-3.1.1.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1.1.2' name='A-target-3.1.1.1.1.2' style='display:none;'></div><div id='X-3.1.1.1.1.2' name='X-3.1.1.1.1.2' style='display:none;'></div><div id='A-3.1.1.1.2' name='A-3.1.1.1.2' style='display:none;'> No
+</div><div id='A-href-3.1.1.1.2' name='A-href-3.1.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.1.2' name='A-target-3.1.1.1.2' style='display:none;'></div><div id='X-3.1.1.1.2' name='X-3.1.1.1.2' style='display:none;'></div><div id='A-3.1.1.2' name='A-3.1.1.2' style='display:none;'> No
+</div><div id='A-href-3.1.1.2' name='A-href-3.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.1.2' name='A-target-3.1.1.2' style='display:none;'></div><div id='X-3.1.1.2' name='X-3.1.1.2' style='display:none;'></div><div id='A-3.1.2' name='A-3.1.2' style='display:none;'> No
+</div><div id='A-href-3.1.2' name='A-href-3.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.1.2' name='A-target-3.1.2' style='display:none;'></div><div id='X-3.1.2' name='X-3.1.2' style='display:none;'></div><div id='A-5.1' name='A-5.1' style='display:none;'><variable></div><div id='A-href-5.1' name='A-href-5.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1' name='A-target-5.1' style='display:none;'></div><div id='X-5.1' name='X-5.1' style='display:none;'>date</div><div id='A-5.1.1' name='A-5.1.1' style='display:none;'><variable></div><div id='A-href-5.1.1' name='A-href-5.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-5.1.1' name='A-target-5.1.1' style='display:none;'></div><div id='X-5.1.1' name='X-5.1.1' style='display:none;'>phone</div><div id='A-6.1' name='A-6.1' style='display:none;'><variable></div><div id='A-href-6.1' name='A-href-6.1' style='display:none;'>javascript:void('');</div><div id='A-target-6.1' name='A-target-6.1' style='display:none;'></div><div id='X-6.1' name='X-6.1' style='display:none;'>relationship2</div><div id='A-6.1.1' name='A-6.1.1' style='display:none;'><variable></div><div id='A-href-6.1.1' name='A-href-6.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-6.1.1' name='A-target-6.1.1' style='display:none;'></div><div id='X-6.1.1' name='X-6.1.1' style='display:none;'>phone2</div><div id='A-6.1.1.1' name='A-6.1.1.1' style='display:none;'> Continue
+</div><div id='A-href-6.1.1.1' name='A-href-6.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-6.1.1.1' name='A-target-6.1.1.1' style='display:none;'></div><div id='X-6.1.1.1' name='X-6.1.1.1' style='display:none;'></div><div id='A-7.1' name='A-7.1' style='display:none;'> Understood.  I would like to proceed to my document. 
+		
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-</div><div id='A-href-4.1.1.1' name='A-href-4.1.1.1' style='display:none;'>javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and mail it to the address provided for the FBI.')</div><div id='A-target-4.1.1.1' name='A-target-4.1.1.1' style='display:none;'></div><div id='X-4.1.1.1' name='X-4.1.1.1' style='display:none;'></div></textarea><textarea id="transcript" name="transcript" style="display:none;" disabled="disabled"></textarea><div style="float:left;width:100%;margin:15px 0 0px 0;border-top: solid 1px #ddd;"><div id=credits class=credits style="display:none;"><div class=credit_text></div></div><p align=center> <a href="http://www.qnamarkup.org/" target=_top>code your own</a></p></div></FORM></div></div>
+</div><div id='A-href-7.1' name='A-href-7.1' style='display:none;'>javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and once you have the necessary signatures it is complete')</div><div id='A-target-7.1' name='A-target-7.1' style='display:none;'></div><div id='X-7.1' name='X-7.1' style='display:none;'></div></textarea><textarea id="transcript" name="transcript" style="display:none;" disabled="disabled"></textarea><div style="float:left;width:100%;margin:15px 0 0px 0;border-top: solid 1px #ddd;"><div id=credits class=credits style="display:none;"><div class=credit_text></div></div><p align=center> <a href="http://www.qnamarkup.org/" target=_top>code your own</a></p></div></FORM></div></div>
 <script type="text/javascript">
 	var QNum = 0;
 	var Qhtml = "";
