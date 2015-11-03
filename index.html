@@ -1,67 +1,93 @@
-Q(1): Are you interested in creating a Caregiver Authorization Affidavit?
+David Kouroyen: CAREGIVER AUTHORIZATION AFFIDAVIT
+
+
+Q(1): When the parents of children are not able or available to provide care for their child, another person, often a family member, steps in to become the child's caregiver. 
+One way for a person to become a child's caregiver without going through a court is Caregiver Authorization. Caregiver Authorization is when the parent or parents give the caregiver written permission to make educational and medical decisions.
+A: Continue
+	Q(1.1): A caregiver authorization form requires the signature of a parent, two witness signatures, and has to be notarized. The form itself only takes about ten minutes to fill out.  
+	A: Continue
+		Q(1.1.1):GOTO:2	
+
+Q(2): Are you interested in creating a Caregiver Authorization Affidavit?
 A: Yes
-	Q(1.1): Great, lets get started! First, what is your full name?
+	Q(2.1): Great, lets get started! First, what is your full name?
 	X:parent
-		DOC(1.1.1):<p style="text-align:center">CAREGIVER AUTHORIZATION AFFIDAVIT<br>Massachusetts General Laws Chapter 201F<br><br>
-		Q(1.1.1): Where do you currently live? (ex: 123 real street, Boston MA, 02108)
+		DOC(2.1.1):<p style="text-align:center">CAREGIVER AUTHORIZATION AFFIDAVIT<br>Massachusetts General Laws Chapter 201F<br><br>
+		Q(2.1.1): Where do you currently live? (ex: 123 real street, Boston MA, 02108)
 		X:address
-			Q(1.1.1.1): What is your phone number?
-			X:phone
-				Q(1.1.1.1.1):GOTO:2
-				
-				
-Q(2): What is your child's first name?
-X:first
-	Q(2.1): What is <x>first</x>'s last name?
-	X:last
-		Q(2.1.1): when was <x>first</x> born?
-		X:birth
-			DOC(2.1.1.1): 1) AUTHORIZING PARTY (Parent/Guardian)<br><br> I, <x>parent</x>, residing at <x>address</x>, am the <x>relationship</x> of the minor child listed below.<br>I do hereby authorize <x>caregiver</x>, residing at <x>address2</x>,  to exercise concurrently the rights
-			and responsibilities, except those prohibited below, that I possess relative to the education and health care of the minor child whose name and date of birth is:<br> <x>first</x> <x>last</x>  <x>birth</x><br><br>
-			Q(2.1.1.1):GOTO:3
-		
-Q(3):which phrase best describes your relationship to <x>first</x>: "parent", "legal guardian", or "legal custodian"?
-X:relationship
-	DOC(3.1): The caregiver may NOT do the following: <x>forbiddenacts</x><br><br> The following statements are true:<br> There are no court orders in effect that would prohibit me from exercising or conferring the rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)<br>
-I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.<br>
-I confer these rights and responsibilities freely and knowingly in order to provide for the child and not as a result of pressure, threats or payments by any person or agency.<br>
-I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. <br><br>
-This document shall remain in effect until <x>date</x>, or until I notify the caregiver in writing that I have amended or revoked it.<br><br>
+			Q(2.1.1.1): What is your child's name?
+			X:child
+				Q(2.1.1.1.1): What is <x>child</x>'s date of birth? (Month/Day/Year)
+				X:birth
+					Q(2.1.1.1.1.1): which phrase best describes your relationship to <x>child</x>: "parent", "legal guardian", or "legal custodian"?
+					X:relationship
+						Q(2.1.1.1.1.1.1): Who is the caregiver you giving authority over <x>child</x>?
+						X:caregiver
+							Q(2.1.1.1.1.1.1.1): where does <x>caregiver</x> live? (ex: 123 real street, Boston MA, 02108)
+							X:address2
+								DOC(2.1.1.1.1.1.1.1.1):1) AUTHORIZING PARTY (Parent/Guardian)<br><br> I, <x>parent</x>, residing at <x>address</x>, am the <x>relationship</x> of the minor child listed below.<br>I do hereby authorize <x>caregiver</x>, residing at <x>address2</x>,  to exercise concurrently the rights
+								and responsibilities, except those prohibited below, that I possess relative to the education and health care of the minor child whose name and date of birth is:<br> <x>child</x>   <x>birth</x><br><br>
+								Q(2.1.1.1.1.1.1.1.1):GOTO:3
+														
 
-	Q(3.1):GOTO:4
+A: No 
 
-Q(4): Who is the caregiver you're giving authority?
-X:caregiver
-	Q(4.1): What is <x>caregiver</x>'s relationship to <x>first</x>? (i.e. aunt, uncle, godfather, grandmother, etc)
-	X:relationship2
-		Q(4.1.1): where does <x>caregiver</x> live? (ex: 123 real street, Boston MA, 02108)
-		X:address2
-			Q(4.1.1.1): What is <x>caregiver</x>'s telephone number? 
-			X:phone2
-				DOC(4.1.1.1.1): I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br> Signature:_________________________________<br> Printed Name:  <x>parent</x><br> Telephone Number: <x>phone</x><br><br>
-				Q(4.1.1.1.1):GOTO:5
-
-Q(5): Are there are any specific acts you do not want the caregiver to perform, please state those acts below, or simply type "N/A".
+Q(3): The caregiver may NOT do the following: (If there are any specific acts you do not want the caregiver to perform, please state those acts here.)
 X:forbiddenacts
-	Q(5.1): Until what date would you like this document to remain in effect? It cannot be more than two years from today.
-	X:date
-		DOC(5.1.1): 2. WITNESSES TO AUTHORIZING PARTY SIGNATURE<br> (To be signed by persons over the age of 18 who are not the designated caregiver.) (To be signed by persons over the age of 18 who are not the designated caregiver.)<br><br>
-Witness #1 Signature: ____________________________________<br>
-Printed Name: ____________________________________<br>
-Address:   ____________________________________<br>
-Telephone: ____________________________________<br><br>
+	Q(3.1): Is the following statement true? There are no court orders in effect that would prohibit me from exercising or conferring the rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)
+	A: Yes
+		Q(3.1.1): Great! Is the following statement true? I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.
+		A: Yes
+			Q(3.1.1.1): Glad to hear it. Is the following statement true? I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.
+			A: Yes
+				Q(3.1.1.1.1):Ok, last one. Is the following statement true? I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. 
+				A: Yes
+					Q(3.1.1.1.1.1):GOTO:5
+				A: No
+					Q(3.1.1.1.1.2):GOTO:4
 
-Witness #2 Signature: ____________________________________<br>
-Printed Name:         ____________________________________<br>
-Address:              ____________________________________<br>
-Telephone:            ____________________________________<br><br>
 
+			A: No
+				Q(3.1.1.1.2):GOTO:4
+													
+		A: No
+			Q(3.1.1.2):GOTO:4
+	A: No
+		Q(3.1.2):GOTO:4
+
+
+
+Q(4): I am sorry, but you are not able to fill out a Caregiver Authorization Affidavit at this time.  Please return when the previous statement is true.
+
+Q(5): Until what date (day, month, year) would you like this document to remain in effect? It cannot be more than two years from today.
+X:date
+	DOC(5.1): The caregiver may NOT do the following: <x>forbiddenacts</x><br><br> The following statements are true:<br> There are no court orders in effect that would prohibit me from exercising or conferringthe rights and responsibilities that I wish to confer upon the caregiver. (If you are the legal guardian or custodian, attach the court order appointing you.)<br>
+	I am not using this affidavit to circumvent any state or federal law, for the purposes of attendance at a particular school, or to re-confer rights to a caregiver from whom those rights have been removed by a court of law.<br>	
+	I confer these rights and responsibilities freely and knowingly in order to provide for the child(ren) and not as a result of pressure, threats or payments by any person or agency.<br>
+	I understand that, if the affidavit is amended or revoked, I must provide the amended affidavit or revocation to all parties to whom I have provided this affidavit. <br><br>
+	This document shall remain in effect until <x>date</x>, or until I notify the caregiver in writing that I have amended or revoked it.<br><br>
+	
+	Q(5.1): What is your telephone number?
+	X:phone
+		DOC(5.1.1): I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br> Signature:_________________________________<br> Printed Name:  <x>parent</x><br> Telephone Number: <x>phone</x><br><br>
 		Q(5.1.1):GOTO:6
 
+Q(6): What is <x>caregiver</x>'s relationship to <x>child</x>? (i.e. aunt, uncle, godfather, grandmother, etc)
+X:relationship2
+	DOC(6.1): 2. WITNESSES TO AUTHORIZING PARTY SIGNATURE<br> (To be signed by persons over the age of 18 who are not the designated caregiver.) (To be signed by persons over the age of 18 who are not the designated caregiver.)<br><br>
+	Witness #1 Signature: ____________________________________<br>
+	Printed Name: ____________________________________<br>
+	Address:   ____________________________________<br>
+	Telephone: ____________________________________<br><br>
 
-Q(6): Are you drafting this form to to circumvent any state or federal law, or for the purposes of attendance at a particular school?
-A: No
-	DOC(6.1): 3. NOTARIZATION OF AUTHORIZING PARTY'S SIGNATURE<br><br>
+	Witness #2 Signature: ____________________________________<br>
+	Printed Name:         ____________________________________<br>
+	Address:              ____________________________________<br>
+	Telephone:            ____________________________________<br><br>
+
+	Q(6.1): What is <x>caregiver</x>'s telephone number? 
+	X:phone2
+		DOC(6.1.1): 3. NOTARIZATION OF AUTHORIZING PARTY'S SIGNATURE<br><br>
 
 
 Commonwealth of Massachusetts<br>
@@ -75,58 +101,38 @@ Signature and seal of notary: _____________________________<br>
 Printed name of notary: _____________________________<br>
 My commission expires: _____________________________<br><br>
 
-	Q(6.1): Are there any court orders that would prohibit you from exercising or conferring the rights and responsibilities for <x>first</x>? 
-	A: No
-		Q(6.1.1): Are you completing this form freely and knowingly in order to provide for <x>first</x> and not as a result of pressure, threats or payments by any person or agency?
-		A: No
-			Q(6.1.1.1):GOTO:8 
-			
+		Q(6.1.1):  Great job! That is all the information needed at this time. 
+		A: Continue
+			DOC(6.1.1.1): 4. CAREGIVER ACKNOWLEDGMENT<br><br>
+	I,<x>caregiver</x>, am at least 18 years of age and the above child currently resides with me at <x>address2</x>. 
+	I am the child's <x>relationship2</x>.<br>
+	
+	I understand that I may, without obtaining further consent from a parent, legal custodian
+	or legal guardian of the child, exercise concurrent rights and responsibilities relative
+	to the education and health care of the child, except those rights and responsibilities
+	prohibited above. However, I may not knowingly make a decision that conflicts with the
+	decision of the child's parent, legal guardian or legal custodian.<br>
+	
+	I understand that, if the affidavit is amended or revoked, I must provide the amended
+	affidavit or revocation to all parties to whom I have provided this affidavit prior to further
+	exercising any rights or responsibilities under the affidavit.<br>
 
-		A: Yes
-			DOC(6.1.1.2): 4. CAREGIVER ACKNOWLEDGMENT<br><br>
-I,<x>caregiver</x>, am at least 18 years of age and the above child currently resides with me at <x>address2</x>.
-I am the child's <x>relationship2</x>.<br>
+	I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br>
 
-I understand that I may, without obtaining further consent from a parent, legal custodian
-or legal guardian of the child, exercise concurrent rights and responsibilities relative
-to the education and health care of the child, except those rights and responsibilities
-prohibited above. However, I may not knowingly make a decision that conflicts with the
-decision of the child's parent, legal guardian or legal custodian.<br>
-
-I understand that, if the affidavit is amended or revoked, I must provide the amended
-affidavit or revocation to all parties to whom I have provided this affidavit prior to further
-exercising any rights or responsibilities under the affidavit.<br>
-
-I hereby affirm that the above statements are true, under pains and penalties of perjury.<br><br>
-
-Signature of caregiver: ____________________________________<br>
-Printed Name:     <x>caregiver</x><br>
-Telephone:        <x>phone2</x><br>
-date:__________           <br><br>
-
-			Q(6.1.1.2):Do you understand that, if this form is amended or revoked, you must provide the amended version or revocation to everyone that you gave a copy? 
-			A: No
-				Q(6.1.1.2.1):GOTO:8
-
-			A: Yes
-				Q(6.1.1.2.2):GOTO:7
-													
-	A: Yes
-		Q(6.1.2):GOTO:8
-A: Yes
-	Q(6.2):GOTO:8
-
-
+	Signature of caregiver: ____________________________________<br>
+	Printed Name:     <x>caregiver</x><br>
+	Telephone:        <x>phone2</x><br>
+	date:__________           <br><br>
 		
-Q(7): You are nearly done drafting your Caregiver Authorization Affidavit. 
-		Once you print out the document, you must sign it in the presence of two witnesses, get the form notarized, and get <x>caregiver</x>'s signature.
-A[javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and once you have the necessary signatures it is complete')]: Understood.  I would like to proceed to my document.
+			Q(6.1.1.1):GOTO:7
+
+Q(7): You are nearly done drafting your Caregiver Authorization Affidavit.  
+Once you print out the document, you must sign it in the presence of two witnesses, get the form notarized, and get <x>caregiver</x>'s signature.
+A[javascript:submit2('http://www.qnamarkup.org/doc/parse/html/', 'POST', 't', 'Proof read your letter. Print it out, and once you have the necessary signatures it is complete')]: Understood.  I would like to proceed to my document. 
+		
 
 
 
-Q(8): I am sorry, but you are not able to fill out a Caregiver Authorization Affidavit at this time.
 
 
 
-
- 
